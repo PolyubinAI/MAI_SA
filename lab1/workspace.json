@@ -1,0 +1,837 @@
+{
+  "configuration" : { },
+  "description" : "Description",
+  "documentation" : { },
+  "id" : 1,
+  "lastModifiedAgent" : "structurizr-javascript",
+  "lastModifiedDate" : "2024-04-02T19:42:01Z",
+  "model" : {
+    "deploymentNodes" : [ {
+      "containerInstances" : [ {
+        "containerId" : "4",
+        "deploymentGroups" : [ "Default" ],
+        "environment" : "Production",
+        "id" : "21",
+        "instanceId" : 1,
+        "properties" : {
+          "structurizr.dsl.identifier" : "production.b350834f-8195-45d2-b664-0c7cc563d2bb.3c735f47-4420-427a-b857-af6195809b4e"
+        },
+        "relationships" : [ {
+          "description" : "Запрос информации о товарах",
+          "destinationId" : "23",
+          "id" : "24",
+          "linkedRelationshipId" : "15",
+          "sourceId" : "21"
+        }, {
+          "description" : "Получение/обновление информации о пользователях",
+          "destinationId" : "27",
+          "id" : "28",
+          "linkedRelationshipId" : "17",
+          "sourceId" : "21"
+        } ],
+        "tags" : "Container Instance"
+      } ],
+      "environment" : "Production",
+      "id" : "20",
+      "instances" : "1",
+      "name" : "Сервис пользователей",
+      "properties" : {
+        "structurizr.dsl.identifier" : "production.b350834f-8195-45d2-b664-0c7cc563d2bb"
+      },
+      "tags" : "Element,Deployment Node"
+    }, {
+      "containerInstances" : [ {
+        "containerId" : "5",
+        "deploymentGroups" : [ "Default" ],
+        "environment" : "Production",
+        "id" : "23",
+        "instanceId" : 1,
+        "properties" : {
+          "structurizr.dsl.identifier" : "production.33ec1494-5381-4eb8-ae63-0854917cbf45.a32f3274-bcb0-4926-9cb6-153beff5a7f8"
+        },
+        "relationships" : [ {
+          "description" : "Получение/обновление информации о товарах",
+          "destinationId" : "30",
+          "id" : "31",
+          "linkedRelationshipId" : "16",
+          "sourceId" : "23"
+        } ],
+        "tags" : "Container Instance"
+      } ],
+      "environment" : "Production",
+      "id" : "22",
+      "instances" : "1",
+      "name" : "Сервис товаров",
+      "properties" : {
+        "structurizr.dsl.identifier" : "production.33ec1494-5381-4eb8-ae63-0854917cbf45"
+      },
+      "tags" : "Element,Deployment Node"
+    }, {
+      "children" : [ {
+        "containerInstances" : [ {
+          "containerId" : "6",
+          "deploymentGroups" : [ "Default" ],
+          "environment" : "Production",
+          "id" : "27",
+          "instanceId" : 1,
+          "properties" : {
+            "structurizr.dsl.identifier" : "production.61c18661-faff-47dc-baa8-e13cb8e13c2f.5527869d-444c-4a0d-96d7-98fcc2a3d141.66b59039-e03c-4c8f-9bb0-b5abbc04c3fc"
+          },
+          "tags" : "Container Instance"
+        } ],
+        "environment" : "Production",
+        "id" : "26",
+        "instances" : "1",
+        "name" : "User Database",
+        "properties" : {
+          "structurizr.dsl.identifier" : "production.61c18661-faff-47dc-baa8-e13cb8e13c2f.5527869d-444c-4a0d-96d7-98fcc2a3d141"
+        },
+        "tags" : "Element,Deployment Node"
+      }, {
+        "containerInstances" : [ {
+          "containerId" : "7",
+          "deploymentGroups" : [ "Default" ],
+          "environment" : "Production",
+          "id" : "30",
+          "instanceId" : 1,
+          "properties" : {
+            "structurizr.dsl.identifier" : "production.61c18661-faff-47dc-baa8-e13cb8e13c2f.4368c9cf-b9ed-4d34-bb33-f8856ea74981.66fff89e-09d3-4c16-8a41-f248f7c2ad1f"
+          },
+          "tags" : "Container Instance"
+        } ],
+        "environment" : "Production",
+        "id" : "29",
+        "instances" : "1",
+        "name" : "Item Database",
+        "properties" : {
+          "structurizr.dsl.identifier" : "production.61c18661-faff-47dc-baa8-e13cb8e13c2f.4368c9cf-b9ed-4d34-bb33-f8856ea74981"
+        },
+        "tags" : "Element,Deployment Node"
+      } ],
+      "environment" : "Production",
+      "id" : "25",
+      "instances" : "1",
+      "name" : "Databases",
+      "properties" : {
+        "structurizr.dsl.identifier" : "production.61c18661-faff-47dc-baa8-e13cb8e13c2f"
+      },
+      "tags" : "Element,Deployment Node"
+    } ],
+    "people" : [ {
+      "id" : "1",
+      "location" : "Unspecified",
+      "name" : "Покупатель",
+      "properties" : {
+        "structurizr.dsl.identifier" : "user"
+      },
+      "relationships" : [ {
+        "description" : "Регистрация пользователя",
+        "destinationId" : "4",
+        "id" : "8",
+        "properties" : {
+          "structurizr.dsl.identifier" : "152385d5-11ef-4d2c-bcdf-b204c71c4aba"
+        },
+        "sourceId" : "1",
+        "tags" : "Relationship"
+      }, {
+        "description" : "Регистрация пользователя",
+        "destinationId" : "3",
+        "id" : "9",
+        "linkedRelationshipId" : "8",
+        "sourceId" : "1"
+      }, {
+        "description" : "Запрос информации о товарах",
+        "destinationId" : "4",
+        "id" : "10",
+        "properties" : {
+          "structurizr.dsl.identifier" : "899eb042-a64e-442d-beab-0d2d2af9a2dd"
+        },
+        "sourceId" : "1",
+        "tags" : "Relationship"
+      }, {
+        "description" : "Управление заказами",
+        "destinationId" : "4",
+        "id" : "11",
+        "properties" : {
+          "structurizr.dsl.identifier" : "9ea55fe1-8664-4492-8a56-92e7f80555ee"
+        },
+        "sourceId" : "1",
+        "tags" : "Relationship"
+      }, {
+        "description" : "Управление заказами",
+        "destinationId" : "3",
+        "id" : "18",
+        "properties" : {
+          "structurizr.dsl.identifier" : "ad26ad11-c241-401b-8ee6-e8caa5110834"
+        },
+        "sourceId" : "1",
+        "tags" : "Relationship"
+      }, {
+        "description" : "Запрос информации о товарах",
+        "destinationId" : "3",
+        "id" : "19",
+        "properties" : {
+          "structurizr.dsl.identifier" : "65ccc738-b0b8-4f98-a34a-06ebf71411e8"
+        },
+        "sourceId" : "1",
+        "tags" : "Relationship"
+      } ],
+      "tags" : "Element,Person"
+    }, {
+      "id" : "2",
+      "location" : "Unspecified",
+      "name" : "Администратор",
+      "properties" : {
+        "structurizr.dsl.identifier" : "admin"
+      },
+      "relationships" : [ {
+        "description" : "Актуализация товаров",
+        "destinationId" : "5",
+        "id" : "12",
+        "properties" : {
+          "structurizr.dsl.identifier" : "44203c0b-19e7-4b8f-ab65-990941782289"
+        },
+        "sourceId" : "2",
+        "tags" : "Relationship"
+      }, {
+        "description" : "Актуализация товаров",
+        "destinationId" : "3",
+        "id" : "13",
+        "linkedRelationshipId" : "12",
+        "sourceId" : "2"
+      }, {
+        "description" : "Запрос информации о пользователях",
+        "destinationId" : "4",
+        "id" : "14",
+        "properties" : {
+          "structurizr.dsl.identifier" : "8ca92d42-136f-4ffd-9de5-8df26f52c564"
+        },
+        "sourceId" : "2",
+        "tags" : "Relationship"
+      } ],
+      "tags" : "Element,Person"
+    } ],
+    "properties" : {
+      "structurizr.groupSeparator" : "/"
+    },
+    "softwareSystems" : [ {
+      "containers" : [ {
+        "documentation" : { },
+        "id" : "4",
+        "name" : "Сервис пользователей",
+        "properties" : {
+          "structurizr.dsl.identifier" : "market.user_service"
+        },
+        "relationships" : [ {
+          "description" : "Запрос информации о товарах",
+          "destinationId" : "5",
+          "id" : "15",
+          "properties" : {
+            "structurizr.dsl.identifier" : "961688f1-cc57-42f4-b86a-c673132ecd4e"
+          },
+          "sourceId" : "4",
+          "tags" : "Relationship"
+        }, {
+          "description" : "Получение/обновление информации о пользователях",
+          "destinationId" : "6",
+          "id" : "17",
+          "properties" : {
+            "structurizr.dsl.identifier" : "13a3a4d6-463c-4cba-861b-e88d87c34c33"
+          },
+          "sourceId" : "4",
+          "tags" : "Relationship"
+        } ],
+        "tags" : "Element,Container"
+      }, {
+        "documentation" : { },
+        "id" : "5",
+        "name" : "Сервис товаров",
+        "properties" : {
+          "structurizr.dsl.identifier" : "market.item_service"
+        },
+        "relationships" : [ {
+          "description" : "Получение/обновление информации о товарах",
+          "destinationId" : "7",
+          "id" : "16",
+          "properties" : {
+            "structurizr.dsl.identifier" : "c6ae0049-182a-42be-a714-2d3b3e69d7ed"
+          },
+          "sourceId" : "5",
+          "tags" : "Relationship"
+        } ],
+        "tags" : "Element,Container"
+      }, {
+        "description" : "База данных с пользователями и их заказами",
+        "documentation" : { },
+        "group" : "Слой хранения",
+        "id" : "6",
+        "name" : "User Database",
+        "properties" : {
+          "structurizr.dsl.identifier" : "market.user_database"
+        },
+        "tags" : "Element,Container,database"
+      }, {
+        "description" : "База данных с товарами",
+        "documentation" : { },
+        "group" : "Слой хранения",
+        "id" : "7",
+        "name" : "Item Database",
+        "properties" : {
+          "structurizr.dsl.identifier" : "market.item_database"
+        },
+        "tags" : "Element,Container,database"
+      } ],
+      "documentation" : { },
+      "id" : "3",
+      "location" : "Unspecified",
+      "name" : "Магазин",
+      "properties" : {
+        "structurizr.dsl.identifier" : "market"
+      },
+      "tags" : "Element,Software System"
+    } ]
+  },
+  "name" : "Магазин",
+  "properties" : {
+    "structurizr.dsl" : "d29ya3NwYWNlIHsKICAgIG5hbWUgItCc0LDQs9Cw0LfQuNC9IgoKICAgICFpZGVudGlmaWVycyBoaWVyYXJjaGljYWwKICAgCiAgICBtb2RlbCB7CiAgICAgICAgcHJvcGVydGllcyB7CiAgICAgICAgICAgIHN0cnVjdHVyaXpyLmdyb3VwU2VwYXJhdG9yICIvIgogICAgICAgIH0KCiAgICAgICAgdXNlciA9IHBlcnNvbiAi0J/QvtC60YPQv9Cw0YLQtdC70YwiCiAgICAgICAgYWRtaW4gPSBwZXJzb24gItCQ0LTQvNC40L3QuNGB0YLRgNCw0YLQvtGAIgoKICAgICAgICBtYXJrZXQgPSBzb2Z0d2FyZVN5c3RlbSAi0JzQsNCz0LDQt9C40L0iIHsKICAgICAgICAgICAgdXNlcl9zZXJ2aWNlID0gY29udGFpbmVyICLQodC10YDQstC40YEg0L/QvtC70YzQt9C+0LLQsNGC0LXQu9C10LkiCiAgICAgICAgICAgIGl0ZW1fc2VydmljZSA9IGNvbnRhaW5lciAi0KHQtdGA0LLQuNGBINGC0L7QstCw0YDQvtCyIgoKICAgICAgICAgICAgZ3JvdXAgItCh0LvQvtC5INGF0YDQsNC90LXQvdC40Y8iIHsKICAgICAgICAgICAgICAgIHVzZXJfZGF0YWJhc2UgPSBjb250YWluZXIgIlVzZXIgRGF0YWJhc2UiIHsKICAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbiAi0JHQsNC30LAg0LTQsNC90L3Ri9GFINGBINC/0L7Qu9GM0LfQvtCy0LDRgtC10LvRj9C80Lgg0Lgg0LjRhSDQt9Cw0LrQsNC30LDQvNC4IgogICAgICAgICAgICAgICAgICAgIHRhZ3MgImRhdGFiYXNlIgogICAgICAgICAgICAgICAgfQoKICAgICAgICAgICAgICAgIGl0ZW1fZGF0YWJhc2UgPSBjb250YWluZXIgIkl0ZW0gRGF0YWJhc2UiIHsKICAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbiAi0JHQsNC30LAg0LTQsNC90L3Ri9GFINGBINGC0L7QstCw0YDQsNC80LgiCiAgICAgICAgICAgICAgICAgICAgdGFncyAiZGF0YWJhc2UiCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0KCiAgICAgICAgICAgIHVzZXIgLT4gdXNlcl9zZXJ2aWNlICLQoNC10LPQuNGB0YLRgNCw0YbQuNGPINC/0L7Qu9GM0LfQvtCy0LDRgtC10LvRjyIKICAgICAgICAgICAgdXNlciAtPiB1c2VyX3NlcnZpY2UgItCX0LDQv9GA0L7RgSDQuNC90YTQvtGA0LzQsNGG0LjQuCDQviDRgtC+0LLQsNGA0LDRhSIKICAgICAgICAgICAgdXNlciAtPiB1c2VyX3NlcnZpY2UgItCj0L/RgNCw0LLQu9C10L3QuNC1INC30LDQutCw0LfQsNC80LgiCiAgICAgICAgICAgIGFkbWluIC0+IGl0ZW1fc2VydmljZSAi0JDQutGC0YPQsNC70LjQt9Cw0YbQuNGPINGC0L7QstCw0YDQvtCyIgogICAgICAgICAgICBhZG1pbiAtPiB1c2VyX3NlcnZpY2UgItCX0LDQv9GA0L7RgSDQuNC90YTQvtGA0LzQsNGG0LjQuCDQviDQv9C+0LvRjNC30L7QstCw0YLQtdC70Y/RhSIKICAgICAgICAgICAgdXNlcl9zZXJ2aWNlIC0+IGl0ZW1fc2VydmljZSAi0JfQsNC/0YDQvtGBINC40L3RhNC+0YDQvNCw0YbQuNC4INC+INGC0L7QstCw0YDQsNGFIgogICAgICAgICAgICBpdGVtX3NlcnZpY2UgLT4gaXRlbV9kYXRhYmFzZSAi0J/QvtC70YPRh9C10L3QuNC1L9C+0LHQvdC+0LLQu9C10L3QuNC1INC40L3RhNC+0YDQvNCw0YbQuNC4INC+INGC0L7QstCw0YDQsNGFIgogICAgICAgICAgICB1c2VyX3NlcnZpY2UgLT4gdXNlcl9kYXRhYmFzZSAi0J/QvtC70YPRh9C10L3QuNC1L9C+0LHQvdC+0LLQu9C10L3QuNC1INC40L3RhNC+0YDQvNCw0YbQuNC4INC+INC/0L7Qu9GM0LfQvtCy0LDRgtC10LvRj9GFIgogICAgICAgIH0KCiAgICAgICAgdXNlciAtPiBtYXJrZXQgItCj0L/RgNCw0LLQu9C10L3QuNC1INC30LDQutCw0LfQsNC80LgiCiAgICAgICAgdXNlciAtPiBtYXJrZXQgItCX0LDQv9GA0L7RgSDQuNC90YTQvtGA0LzQsNGG0LjQuCDQviDRgtC+0LLQsNGA0LDRhSIKCiAgICAgICAgcHJvZHVjdGlvbiA9IGRlcGxveW1lbnRFbnZpcm9ubWVudCAiUHJvZHVjdGlvbiIgewogICAgICAgICAgICBkZXBsb3ltZW50R3JvdXAgIlByb2R1Y3Rpb24iCgogICAgICAgICAgICBkZXBsb3ltZW50Tm9kZSAi0KHQtdGA0LLQuNGBINC/0L7Qu9GM0LfQvtCy0LDRgtC10LvQtdC5IiB7CiAgICAgICAgICAgICAgICBjb250YWluZXJJbnN0YW5jZSBtYXJrZXQudXNlcl9zZXJ2aWNlCiAgICAgICAgICAgIH0KICAgICAgICAgICAgZGVwbG95bWVudE5vZGUgItCh0LXRgNCy0LjRgSDRgtC+0LLQsNGA0L7QsiIgewogICAgICAgICAgICAgICAgY29udGFpbmVySW5zdGFuY2UgbWFya2V0Lml0ZW1fc2VydmljZQogICAgICAgICAgICB9CgogICAgICAgICAgICBkZXBsb3ltZW50Tm9kZSAiRGF0YWJhc2VzIiB7CiAgICAgICAgICAgICAgICBkZXBsb3ltZW50Tm9kZSAiVXNlciBEYXRhYmFzZSIgewogICAgICAgICAgICAgICAgICAgIGNvbnRhaW5lckluc3RhbmNlIG1hcmtldC51c2VyX2RhdGFiYXNlCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICBkZXBsb3ltZW50Tm9kZSAiSXRlbSBEYXRhYmFzZSIgewogICAgICAgICAgICAgICAgICAgIGNvbnRhaW5lckluc3RhbmNlIG1hcmtldC5pdGVtX2RhdGFiYXNlCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICB9CgogICAgdmlld3MgewogICAgICAgIHRoZW1lcyBkZWZhdWx0CgogICAgICAgIHByb3BlcnRpZXMgeyAKICAgICAgICAgICAgc3RydWN0dXJpenIudG9vbHRpcHMgdHJ1ZQogICAgICAgIH0KCiAgICAgICAgc3lzdGVtQ29udGV4dCBtYXJrZXQgewogICAgICAgICAgICBhdXRvbGF5b3V0CiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgIH0KCiAgICAgICAgY29udGFpbmVyIG1hcmtldCB7CiAgICAgICAgICAgIGF1dG9sYXlvdXQKICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgfQoKICAgICAgICBkZXBsb3ltZW50IG1hcmtldCBwcm9kdWN0aW9uIHsKICAgICAgICAgICAgYXV0b0xheW91dAogICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICB9CgogICAgICAgIGR5bmFtaWMgbWFya2V0ICJVQzAxIiAi0KHQvtC30LTQsNC90LjQtSDQvdC+0LLQvtCz0L4g0L/QvtC70YzQt9C+0LLQsNGC0LXQu9GPIiB7CiAgICAgICAgICAgIGF1dG9MYXlvdXQKICAgICAgICAgICAgdXNlciAtPiBtYXJrZXQudXNlcl9zZXJ2aWNlICLQodC+0LfQtNCw0YLRjCDQvdC+0LLQvtCz0L4g0L/QvtC70YzQt9C+0LLQsNGC0LXQu9GPIChQT1NUIC91c2VyKSIKICAgICAgICAgICAgbWFya2V0LnVzZXJfc2VydmljZSAtPiBtYXJrZXQudXNlcl9kYXRhYmFzZSAi0KHQvtGF0YDQsNC90LjRgtGMINC00LDQvdC90YvQtSDQviDQv9C+0LvRjNC30L7QstCw0YLQtdC70LUiCiAgICAgICAgfQoKICAgICAgICBkeW5hbWljIG1hcmtldCAiVUMwMiIgItCf0L7QuNGB0Log0L/QvtC70YzQt9C+0LLQsNGC0LXQu9GPINC/0L4g0LvQvtCz0LjQvdGDIiB7CiAgICAgICAgICAgIGF1dG9MYXlvdXQKICAgICAgICAgICAgYWRtaW4gLT4gbWFya2V0LnVzZXJfc2VydmljZSAi0JfQsNC/0YDQvtGB0LjRgtGMINC/0L7Qu9GM0LfQvtCy0LDRgtC10LvQtdC5INC/0L4g0LvQvtCz0LjQvdGDIChHRVQgL3VzZXIvc2VhcmNoQnlMb2dpbikiCiAgICAgICAgICAgIG1hcmtldC51c2VyX3NlcnZpY2UgLT4gbWFya2V0LnVzZXJfZGF0YWJhc2UgItCf0L7Qu9GD0YfQuNGC0Ywg0LTQsNC90L3Ri9C1INC+INC/0L7Qu9GM0LfQvtCy0LDRgtC10LvRj9GFIgogICAgICAgIH0KCiAgICAgICAgZHluYW1pYyBtYXJrZXQgIlVDMDMiICLQn9C+0LjRgdC6INC/0L7Qu9GM0LfQvtCy0LDRgtC10LvRjyDQv9C+INC70L7Qs9C40L3RgyIgewogICAgICAgICAgICBhdXRvTGF5b3V0CiAgICAgICAgICAgIGFkbWluIC0+IG1hcmtldC51c2VyX3NlcnZpY2UgItCX0LDQv9GA0L7RgdC40YLRjCDQv9C+0LvRjNC30L7QstCw0YLQtdC70LXQuSDQv9C+INC40LzQtdC90LggKEdFVCAvdXNlci9zZWFyY2hCeU5hbWUpIgogICAgICAgICAgICBtYXJrZXQudXNlcl9zZXJ2aWNlIC0+IG1hcmtldC51c2VyX2RhdGFiYXNlICLQn9C+0LvRg9GH0LjRgtGMINC00LDQvdC90YvQtSDQviDQv9C+0LvRjNC30L7QstCw0YLQtdC70Y/RhSIKICAgICAgICB9CgogICAgICAgIGR5bmFtaWMgbWFya2V0ICJVQzA0IiAi0KHQvtC30LTQsNC90LjQtSDRgtC+0LLQsNGA0LAiIHsKICAgICAgICAgICAgYXV0b0xheW91dAogICAgICAgICAgICBhZG1pbiAtPiBtYXJrZXQuaXRlbV9zZXJ2aWNlICLQodC+0LfQtNCw0YLRjCDQvdC+0LLRi9C5INGC0L7QstCw0YAgKFBPU1QgL2l0ZW0pIgogICAgICAgICAgICBtYXJrZXQuaXRlbV9zZXJ2aWNlIC0+IG1hcmtldC5pdGVtX2RhdGFiYXNlICLQodC+0YXRgNCw0L3QuNGC0Ywg0LTQsNC90L3Ri9C1INC+INGC0L7QstCw0YDQtSIKICAgICAgICB9CgogICAgICAgIGR5bmFtaWMgbWFya2V0ICJVQzA1IiAi0J/QvtC70YPRh9C10L3QuNC1INGB0L/QuNGB0LrQsCDRgtC+0LLQsNGA0L7QsiIgewogICAgICAgICAgICBhdXRvTGF5b3V0CiAgICAgICAgICAgIHVzZXIgLT4gbWFya2V0LnVzZXJfc2VydmljZSAi0JfQsNC/0YDQvtGB0LjRgtGMINGB0L/QuNGB0L7QuiDRgtC+0LLQsNGA0L7QsiAoR0VUIC9pdGVtcykiCiAgICAgICAgICAgIG1hcmtldC51c2VyX3NlcnZpY2UgLT4gbWFya2V0Lml0ZW1fc2VydmljZSAi0JfQsNC/0YDQvtGB0LjRgtGMINGB0L/QuNGB0L7QuiDRgtC+0LLQsNGA0L7QsiAoR0VUIC9pdGVtcykiCiAgICAgICAgICAgIG1hcmtldC5pdGVtX3NlcnZpY2UgLT4gbWFya2V0Lml0ZW1fZGF0YWJhc2UgItCf0L7Qu9GD0YfQuNGC0Ywg0LTQsNC90L3Ri9C1INC+INGC0L7QstCw0YDQsNGFIgogICAgICAgIH0KCiAgICAgICAgZHluYW1pYyBtYXJrZXQgIlVDMDYiICLQlNC+0LHQsNCy0LvQtdC90LjQtSDRgtC+0LLQsNGA0LAg0LIg0LrQvtGA0LfQuNC90YMiIHsKICAgICAgICAgICAgYXV0b0xheW91dAogICAgICAgICAgICB1c2VyIC0+IG1hcmtldC51c2VyX3NlcnZpY2UgItCX0LDQv9GA0L7RgdC40YLRjCDQtNC+0LHQsNCy0LvQtdC90LjQtSDRgtC+0LLQsNGA0LAgKFBVVCAvaXRlbSkiCiAgICAgICAgICAgIG1hcmtldC51c2VyX3NlcnZpY2UgLT4gbWFya2V0Lml0ZW1fc2VydmljZSAi0J/QvtC00YLQstC10YDQtNC40YLRjCDRgdGD0YnQtdGB0YLQstC+0LLQsNC90LjQtSDRgtC+0LLQsNGA0LAgKEdFVCAvaXRlbSkiCiAgICAgICAgICAgIG1hcmtldC5pdGVtX3NlcnZpY2UgLT4gbWFya2V0Lml0ZW1fZGF0YWJhc2UgItCf0L7Qu9GD0YfQuNGC0Ywg0LTQsNC90L3Ri9C1INC+INGC0L7QstCw0YDQtSIKICAgICAgICAgICAgbWFya2V0LnVzZXJfc2VydmljZSAtPiBtYXJrZXQudXNlcl9kYXRhYmFzZSAi0JLQvdC10YHRgtC4INC40LfQvNC10L3QtdC90LjRjyDQsiDQutC+0YDQt9C40L3RgyIKICAgICAgICB9CgogICAgICAgIGR5bmFtaWMgbWFya2V0ICJVQzA3IiAi0J/QvtC70YPRh9C10L3QuNC1INC60L7RgNC30LjQvdGLINC00LvRjyDQv9C+0LvRjNC30L7QstCw0YLQtdC70Y8iIHsKICAgICAgICAgICAgYXV0b0xheW91dAogICAgICAgICAgICB1c2VyIC0+IG1hcmtldC51c2VyX3NlcnZpY2UgItCX0LDQv9GA0L7RgdC40YLRjCDQutC+0YDQt9C40L3RgyAoR0VUIC9vcmRlcikiCiAgICAgICAgICAgIG1hcmtldC51c2VyX3NlcnZpY2UgLT4gbWFya2V0LnVzZXJfZGF0YWJhc2UgItCf0L7Qu9GD0YfQuNGC0Ywg0LTQsNC90L3Ri9C1INC+INC60L7RgNC30LjQvdC1IgogICAgICAgIH0KCgogICAgICAgIHN0eWxlcyB7CiAgICAgICAgICAgIGVsZW1lbnQgImRhdGFiYXNlIiB7CiAgICAgICAgICAgICAgICBzaGFwZSBjeWxpbmRlcgogICAgICAgICAgICB9CiAgICAgICAgfQogICAgfQp9Cg=="
+  },
+  "views" : {
+    "configuration" : {
+      "branding" : { },
+      "lastSavedView" : "Deployment-001",
+      "metadataSymbols" : "SquareBrackets",
+      "properties" : {
+        "structurizr.tooltips" : "true"
+      },
+      "styles" : {
+        "elements" : [ {
+          "shape" : "Cylinder",
+          "tag" : "database"
+        } ]
+      },
+      "terminology" : { },
+      "themes" : [ "https://static.structurizr.com/themes/default/theme.json" ]
+    },
+    "containerViews" : [ {
+      "automaticLayout" : {
+        "applied" : true,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "TopBottom",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "dimensions" : {
+        "height" : 2665,
+        "width" : 1680
+      },
+      "elements" : [ {
+        "id" : "1",
+        "x" : 239,
+        "y" : 200
+      }, {
+        "id" : "2",
+        "x" : 989,
+        "y" : 200
+      }, {
+        "id" : "4",
+        "x" : 239,
+        "y" : 800
+      }, {
+        "id" : "5",
+        "x" : 989,
+        "y" : 1400
+      }, {
+        "id" : "6",
+        "x" : 239,
+        "y" : 2000
+      }, {
+        "id" : "7",
+        "x" : 989,
+        "y" : 2000
+      } ],
+      "externalSoftwareSystemBoundariesVisible" : false,
+      "generatedKey" : true,
+      "key" : "Container-001",
+      "order" : 2,
+      "relationships" : [ {
+        "id" : "10",
+        "vertices" : [ {
+          "x" : 451,
+          "y" : 675
+        } ]
+      }, {
+        "id" : "11",
+        "vertices" : [ {
+          "x" : 601,
+          "y" : 668
+        } ]
+      }, {
+        "id" : "12"
+      }, {
+        "id" : "14"
+      }, {
+        "id" : "15"
+      }, {
+        "id" : "16"
+      }, {
+        "id" : "17"
+      }, {
+        "id" : "8",
+        "vertices" : [ {
+          "x" : 301,
+          "y" : 681
+        } ]
+      } ],
+      "softwareSystemId" : "3"
+    } ],
+    "deploymentViews" : [ {
+      "automaticLayout" : {
+        "applied" : true,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "TopBottom",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "dimensions" : {
+        "height" : 2148,
+        "width" : 1692
+      },
+      "elements" : [ {
+        "id" : "20",
+        "x" : 175,
+        "y" : 175
+      }, {
+        "id" : "21",
+        "x" : 619,
+        "y" : 220
+      }, {
+        "id" : "22",
+        "x" : 175,
+        "y" : 175
+      }, {
+        "id" : "23",
+        "x" : 261,
+        "y" : 820
+      }, {
+        "id" : "25",
+        "x" : 175,
+        "y" : 175
+      }, {
+        "id" : "26",
+        "x" : 175,
+        "y" : 175
+      }, {
+        "id" : "27",
+        "x" : 1002,
+        "y" : 1466
+      }, {
+        "id" : "29",
+        "x" : 175,
+        "y" : 175
+      }, {
+        "id" : "30",
+        "x" : 240,
+        "y" : 1466
+      } ],
+      "environment" : "Production",
+      "generatedKey" : true,
+      "key" : "Deployment-001",
+      "order" : 3,
+      "relationships" : [ {
+        "id" : "24"
+      }, {
+        "id" : "28"
+      }, {
+        "id" : "31"
+      } ],
+      "softwareSystemId" : "3"
+    } ],
+    "dynamicViews" : [ {
+      "automaticLayout" : {
+        "applied" : true,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "TopBottom",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "description" : "Создание нового пользователя",
+      "dimensions" : {
+        "height" : 2065,
+        "width" : 930
+      },
+      "elementId" : "3",
+      "elements" : [ {
+        "id" : "1",
+        "x" : 239,
+        "y" : 199
+      }, {
+        "id" : "4",
+        "x" : 239,
+        "y" : 799
+      }, {
+        "id" : "6",
+        "x" : 239,
+        "y" : 1399
+      } ],
+      "externalBoundariesVisible" : false,
+      "key" : "UC01",
+      "order" : 4,
+      "relationships" : [ {
+        "description" : "Создать нового пользователя (POST /user)",
+        "id" : "8",
+        "order" : "1",
+        "response" : false
+      }, {
+        "description" : "Сохранить данные о пользователе",
+        "id" : "17",
+        "order" : "2",
+        "response" : false
+      } ]
+    }, {
+      "automaticLayout" : {
+        "applied" : true,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "TopBottom",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "description" : "Поиск пользователя по логину",
+      "dimensions" : {
+        "height" : 2065,
+        "width" : 930
+      },
+      "elementId" : "3",
+      "elements" : [ {
+        "id" : "2",
+        "x" : 239,
+        "y" : 199
+      }, {
+        "id" : "4",
+        "x" : 239,
+        "y" : 799
+      }, {
+        "id" : "6",
+        "x" : 239,
+        "y" : 1399
+      } ],
+      "externalBoundariesVisible" : false,
+      "key" : "UC02",
+      "order" : 5,
+      "relationships" : [ {
+        "description" : "Запросить пользователей по логину (GET /user/searchByLogin)",
+        "id" : "14",
+        "order" : "1",
+        "response" : false
+      }, {
+        "description" : "Получить данные о пользователях",
+        "id" : "17",
+        "order" : "2",
+        "response" : false
+      } ]
+    }, {
+      "automaticLayout" : {
+        "applied" : true,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "TopBottom",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "description" : "Поиск пользователя по логину",
+      "dimensions" : {
+        "height" : 2065,
+        "width" : 930
+      },
+      "elementId" : "3",
+      "elements" : [ {
+        "id" : "2",
+        "x" : 239,
+        "y" : 199
+      }, {
+        "id" : "4",
+        "x" : 239,
+        "y" : 799
+      }, {
+        "id" : "6",
+        "x" : 239,
+        "y" : 1399
+      } ],
+      "externalBoundariesVisible" : false,
+      "key" : "UC03",
+      "order" : 6,
+      "relationships" : [ {
+        "description" : "Запросить пользователей по имени (GET /user/searchByName)",
+        "id" : "14",
+        "order" : "1",
+        "response" : false
+      }, {
+        "description" : "Получить данные о пользователях",
+        "id" : "17",
+        "order" : "2",
+        "response" : false
+      } ]
+    }, {
+      "automaticLayout" : {
+        "applied" : true,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "TopBottom",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "description" : "Создание товара",
+      "dimensions" : {
+        "height" : 2065,
+        "width" : 930
+      },
+      "elementId" : "3",
+      "elements" : [ {
+        "id" : "2",
+        "x" : 239,
+        "y" : 199
+      }, {
+        "id" : "5",
+        "x" : 239,
+        "y" : 799
+      }, {
+        "id" : "7",
+        "x" : 239,
+        "y" : 1399
+      } ],
+      "externalBoundariesVisible" : false,
+      "key" : "UC04",
+      "order" : 7,
+      "relationships" : [ {
+        "description" : "Создать новый товар (POST /item)",
+        "id" : "12",
+        "order" : "1",
+        "response" : false
+      }, {
+        "description" : "Сохранить данные о товаре",
+        "id" : "16",
+        "order" : "2",
+        "response" : false
+      } ]
+    }, {
+      "automaticLayout" : {
+        "applied" : true,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "TopBottom",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "description" : "Получение списка товаров",
+      "dimensions" : {
+        "height" : 2665,
+        "width" : 930
+      },
+      "elementId" : "3",
+      "elements" : [ {
+        "id" : "1",
+        "x" : 240,
+        "y" : 200
+      }, {
+        "id" : "4",
+        "x" : 240,
+        "y" : 800
+      }, {
+        "id" : "5",
+        "x" : 240,
+        "y" : 1400
+      }, {
+        "id" : "7",
+        "x" : 240,
+        "y" : 2000
+      } ],
+      "externalBoundariesVisible" : false,
+      "key" : "UC05",
+      "order" : 8,
+      "relationships" : [ {
+        "description" : "Запросить список товаров (GET /items)",
+        "id" : "8",
+        "order" : "1",
+        "response" : false
+      }, {
+        "description" : "Запросить список товаров (GET /items)",
+        "id" : "15",
+        "order" : "2",
+        "response" : false
+      }, {
+        "description" : "Получить данные о товарах",
+        "id" : "16",
+        "order" : "3",
+        "response" : false
+      } ]
+    }, {
+      "automaticLayout" : {
+        "applied" : true,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "TopBottom",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "description" : "Добавление товара в корзину",
+      "dimensions" : {
+        "height" : 2665,
+        "width" : 1680
+      },
+      "elementId" : "3",
+      "elements" : [ {
+        "id" : "1",
+        "x" : 556,
+        "y" : 200
+      }, {
+        "id" : "4",
+        "x" : 556,
+        "y" : 800
+      }, {
+        "id" : "5",
+        "x" : 931,
+        "y" : 1400
+      }, {
+        "id" : "6",
+        "x" : 239,
+        "y" : 2000
+      }, {
+        "id" : "7",
+        "x" : 989,
+        "y" : 2000
+      } ],
+      "externalBoundariesVisible" : false,
+      "key" : "UC06",
+      "order" : 9,
+      "relationships" : [ {
+        "description" : "Запросить добавление товара (PUT /item)",
+        "id" : "8",
+        "order" : "1",
+        "response" : false
+      }, {
+        "description" : "Подтвердить существование товара (GET /item)",
+        "id" : "15",
+        "order" : "2",
+        "response" : false
+      }, {
+        "description" : "Получить данные о товаре",
+        "id" : "16",
+        "order" : "3",
+        "response" : false
+      }, {
+        "description" : "Внести изменения в корзину",
+        "id" : "17",
+        "order" : "4",
+        "response" : false
+      } ]
+    }, {
+      "automaticLayout" : {
+        "applied" : true,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "TopBottom",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "description" : "Получение корзины для пользователя",
+      "dimensions" : {
+        "height" : 2065,
+        "width" : 930
+      },
+      "elementId" : "3",
+      "elements" : [ {
+        "id" : "1",
+        "x" : 239,
+        "y" : 199
+      }, {
+        "id" : "4",
+        "x" : 239,
+        "y" : 799
+      }, {
+        "id" : "6",
+        "x" : 239,
+        "y" : 1399
+      } ],
+      "externalBoundariesVisible" : false,
+      "key" : "UC07",
+      "order" : 10,
+      "relationships" : [ {
+        "description" : "Запросить корзину (GET /order)",
+        "id" : "8",
+        "order" : "1",
+        "response" : false
+      }, {
+        "description" : "Получить данные о корзине",
+        "id" : "17",
+        "order" : "2",
+        "response" : false
+      } ]
+    } ],
+    "systemContextViews" : [ {
+      "automaticLayout" : {
+        "applied" : true,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "TopBottom",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "dimensions" : {
+        "height" : 1300,
+        "width" : 1556
+      },
+      "elements" : [ {
+        "id" : "1",
+        "x" : 206,
+        "y" : 199
+      }, {
+        "id" : "2",
+        "x" : 956,
+        "y" : 199
+      }, {
+        "id" : "3",
+        "x" : 206,
+        "y" : 799
+      } ],
+      "enterpriseBoundaryVisible" : true,
+      "generatedKey" : true,
+      "key" : "SystemContext-001",
+      "order" : 1,
+      "relationships" : [ {
+        "id" : "13"
+      }, {
+        "id" : "18",
+        "vertices" : [ {
+          "x" : 418,
+          "y" : 674
+        } ]
+      }, {
+        "id" : "19",
+        "vertices" : [ {
+          "x" : 568,
+          "y" : 667
+        } ]
+      }, {
+        "id" : "9",
+        "vertices" : [ {
+          "x" : 268,
+          "y" : 680
+        } ]
+      } ],
+      "softwareSystemId" : "3"
+    } ]
+  }
+}
