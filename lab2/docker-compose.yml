@@ -1,0 +1,48 @@
+version: '2'
+services:
+  user_service:
+    tty: true
+    container_name: user_service
+    build:
+      dockerfile: user_service.Dockerfile
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_LOGIN=admin
+      - DB_PASSWORD=admin
+      - DB_DATABASE=archdb
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - 8080:8080
+    networks:
+      - network
+  db:
+    container_name: postgres
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - PGDATA=/data/postgres
+      - POSTGRES_DB=archdb
+    volumes:
+      - db:/data/postgres
+    ports:
+      - 5432:5432
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -d postgres" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      - network
+  
+volumes:
+  db:
+
+networks:
+  network:
+    driver: "bridge"
+    external: false
