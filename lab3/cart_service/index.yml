@@ -1,0 +1,139 @@
+openapi: '3.0.0'
+info:
+  title: Cart service
+  version: '1.0'
+
+servers:
+  - url: http://localhost:8082
+    description: Main server
+
+paths:
+  /cart:
+    get:
+      description: Get cart information by id
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          $ref: "#/components/responses/Cart"
+        404:
+          $ref: "#/components/responses/NotFound"
+        400:
+          $ref: "#/components/responses/IncompleteRequest"
+        500:
+          $ref: "#/components/responses/InternalError"
+
+    delete:
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+        404:
+          $ref: "#/components/responses/NotFound"
+        400:
+          $ref: "#/components/responses/IncompleteRequest"
+        500:
+          $ref: "#/components/responses/InternalError"
+
+  /cart/add:
+    put:
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: item
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          $ref: "#/components/responses/Cart"
+        404:
+          $ref: "#/components/responses/NotFound"
+        400:
+          $ref: "#/components/responses/IncompleteRequest"
+        500:
+          $ref: "#/components/responses/InternalError"
+
+  /cart/remove:
+    put:
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: item
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          $ref: "#/components/responses/Cart"
+        404:
+          $ref: "#/components/responses/NotFound"
+        400:
+          $ref: "#/components/responses/IncompleteRequest"
+        500:
+          $ref: "#/components/responses/InternalError"
+
+components:
+  schemas:
+    Cart:
+      type: object
+      properties:
+        id:
+          type: string
+        items:
+          type: array
+          items:
+            type: string
+
+    Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        detail:
+          type: string
+        instance:
+          type: string
+    
+  responses:
+    Cart:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Cart"
+    NotFound:
+      description: Cart not found
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    InternalError:
+      description: Internal error
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    IncompleteRequest:
+      description: Request is incomplete
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"

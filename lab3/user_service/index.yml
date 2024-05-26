@@ -1,0 +1,214 @@
+openapi: '3.0.0'
+info:
+  title: User service
+  version: '1.0'
+
+servers:
+  - url: http://localhost:8080
+    description: Main server
+
+paths:
+  /user:
+    get:
+      description: Get user information by id
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          $ref: "#/components/responses/User"
+        404:
+          $ref: "#/components/responses/NotFound"
+        400:
+          $ref: "#/components/responses/IncompleteRequest"
+        500:
+          $ref: "#/components/responses/InternalError"
+
+    post:
+      description: Register new user
+      parameters:
+        - name: first_name
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: last_name
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: email
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: phone
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: login
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: password
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          $ref: "#/components/responses/User"
+        400:
+          description: User information invalid or incomplete
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        500:
+          $ref: "#/components/responses/InternalError"
+
+    put:
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: first_name
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: last_name
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: email
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: phone
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: login
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: password
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        200:
+          $ref: "#/components/responses/User"
+        404:
+          $ref: "#/components/responses/NotFound"
+        400:
+          $ref: "#/components/responses/IncompleteRequest"
+        500:
+          $ref: "#/components/responses/InternalError"
+
+    delete:
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: OK
+        404:
+          $ref: "#/components/responses/NotFound"
+        400:
+          $ref: "#/components/responses/IncompleteRequest"
+        500:
+          $ref: "#/components/responses/InternalError"
+  
+  /user/search:
+    get:
+      parameters:
+        - name: first_name
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: last_name
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          $ref: "#/components/responses/User"
+        404:
+          $ref: "#/components/responses/NotFound"
+        400:
+          $ref: "#/components/responses/IncompleteRequest"
+        500:
+          $ref: "#/components/responses/InternalError"
+        
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        login:
+          type: string
+
+    Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        detail:
+          type: string
+        instance:
+          type: string
+    
+  responses:
+    User:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/User"
+    NotFound:
+      description: User not found
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    InternalError:
+      description: Internal error
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    IncompleteRequest:
+      description: Request is incomplete
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
