@@ -1,0 +1,144 @@
+version: '2'
+services:
+  api_gateway:
+    container_name: api_gateway
+    tty: true
+    build:
+      context: .
+      dockerfile: api_gateway.Dockerfile
+    environment:
+      - DB_HOST=redis
+      - DB_PORT=6379
+      - USER_SERVICE=http://user_service:8080
+      - ITEM_SERVICE=http://item_service:8080
+      - CART_SERVICE=http://cart_service:8080
+    depends_on:
+      redis:
+        condition: service_healthy
+      user_service:
+        condition: service_started
+      item_service:
+        condition: service_started
+      cart_service:
+        condition: service_started
+    ports:
+      - 8080:8080
+    networks:
+      - network
+
+  user_service:
+    container_name: user_service
+    tty: true
+    build:
+      context: .
+      dockerfile: user_service.Dockerfile
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_LOGIN=admin
+      - DB_PASSWORD=admin
+      - DB_DATABASE=archdb
+      - JWT_KEY=admin_jwt
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - 8081:8080
+    networks:
+      - network
+
+  item_service:
+    container_name: item_service
+    tty: true
+    build:
+      context: .
+      dockerfile: item_service.Dockerfile
+    environment:
+      - DB_HOST=mongodb
+      - DB_PORT=27017
+      - DB_DATABASE=archdb
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    ports:
+      - 8082:8080
+    networks:
+      - network
+
+  cart_service:
+    container_name: cart_service
+    tty: true
+    build:
+      context: .
+      dockerfile: cart_service.Dockerfile
+    environment:
+      - DB_HOST=mongodb
+      - DB_PORT=27017
+      - DB_DATABASE=archdb
+      - JWT_KEY=admin_jwt
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    ports:
+      - 8083:8080
+    networks:
+      - network
+
+  postgres:
+    container_name: postgres
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - PGDATA=/data/postgres
+      - POSTGRES_DB=archdb
+    volumes:
+      - ./db/postgres:/data/postgres
+    ports:
+      - 5432:5432
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -d postgres" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      - network
+
+  mongodb:
+    container_name: mongodb
+    image: mongo:5.0
+    volumes:
+      - ./db/mongodb:/data/db
+    ports:
+      - 27017:27017
+    restart: unless-stopped
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      - network
+
+  redis:
+    container_name: redis
+    image: redis:6.2-alpine
+    volumes: 
+      - ./db/cache:/data
+    ports:
+      - 6379:6379
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    command: redis-server --save 20 1 --loglevel warning 
+    networks:
+      - network
+
+networks:
+  network:
+    driver: "bridge"
+    external: false
