@@ -1,0 +1,176 @@
+openapi: '3.0.0'
+info:
+  title: Item service
+  version: '1.0'
+
+servers:
+  - url: http://localhost:8082
+    description: Main server
+
+paths:
+  /item:
+    get:
+      description: Get item information by id
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          $ref: "#/components/responses/Item"
+        404:
+          $ref: "#/components/responses/NotFound"
+        400:
+          $ref: "#/components/responses/IncompleteRequest"
+        500:
+          $ref: "#/components/responses/InternalError"
+
+    post:
+      description: Add new item
+      parameters:
+        - name: name
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: price
+          in: query
+          required: true
+          schema:
+            type: number
+      responses:
+        200:
+          $ref: "#/components/responses/Item"
+        400:
+          description: Item information invalid or incomplete
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        500:
+          $ref: "#/components/responses/InternalError"
+
+    put:
+      parameters:
+        - name: name
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: price
+          in: query
+          required: false
+          schema:
+            type: number
+      responses:
+        200:
+          $ref: "#/components/responses/Item"
+        404:
+          $ref: "#/components/responses/NotFound"
+        400:
+          $ref: "#/components/responses/IncompleteRequest"
+        500:
+          $ref: "#/components/responses/InternalError"
+
+    delete:
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+        404:
+          $ref: "#/components/responses/NotFound"
+        400:
+          $ref: "#/components/responses/IncompleteRequest"
+        500:
+          $ref: "#/components/responses/InternalError"
+
+  /item/all:
+    get:
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Item"
+        500:
+          $ref: "#/components/responses/InternalError"
+
+  /item/search:
+    get:
+      parameters:
+        - name: name
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Item"
+        400:
+          $ref: "#/components/responses/IncompleteRequest"
+        500:
+          $ref: "#/components/responses/InternalError"
+  
+components:
+  schemas:
+    Item:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        price:
+          type: number
+
+    Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        detail:
+          type: string
+        instance:
+          type: string
+    
+  responses:
+    Item:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Item"
+    NotFound:
+      description: Item not found
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    InternalError:
+      description: Internal error
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    IncompleteRequest:
+      description: Request is incomplete
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"

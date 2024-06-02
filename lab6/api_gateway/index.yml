@@ -1,0 +1,484 @@
+openapi: '3.0.0'
+info:
+  title: Cart service
+  version: '1.0'
+
+servers:
+  - url: http://localhost:8080
+    description: Main server
+
+paths:
+  /user:
+    get:
+      description: Get user information by id
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          $ref: "#/components/responses/User"
+        404:
+          $ref: "#/components/responses/NotFound"
+        400:
+          $ref: "#/components/responses/IncompleteRequest"
+        500:
+          $ref: "#/components/responses/InternalError"
+      security:
+        - basicAuth: []
+
+    post:
+      description: Register new user
+      parameters:
+        - name: first_name
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: last_name
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: email
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: phone
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: login
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: password
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          $ref: "#/components/responses/User"
+        400:
+          description: User information invalid or incomplete
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        500:
+          $ref: "#/components/responses/InternalError"
+
+    put:
+      parameters:
+        - name: first_name
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: last_name
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: email
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: phone
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: login
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: password
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        200:
+          $ref: "#/components/responses/User"
+        404:
+          $ref: "#/components/responses/NotFound"
+        400:
+          $ref: "#/components/responses/IncompleteRequest"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: "#/components/responses/InternalError"
+      security:
+        - basicAuth: []
+
+    delete:
+      responses:
+        200:
+          description: OK
+        404:
+          $ref: "#/components/responses/NotFound"
+        400:
+          $ref: "#/components/responses/IncompleteRequest"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: "#/components/responses/InternalError"
+      security:
+        - basicAuth: []
+  
+  /user/search/name:
+    get:
+      parameters:
+        - name: first_name
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: last_name
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+        400:
+          $ref: "#/components/responses/IncompleteRequest"
+        500:
+          $ref: "#/components/responses/InternalError"
+      security:
+        - basicAuth: []
+  
+  /user/search/login:
+    get:
+      parameters:
+        - name: login
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+        400:
+          $ref: "#/components/responses/IncompleteRequest"
+        500:
+          $ref: "#/components/responses/InternalError"
+      security:
+        - basicAuth: []
+
+  /item:
+    get:
+      description: Get item information by id
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          $ref: "#/components/responses/Item"
+        404:
+          $ref: "#/components/responses/NotFound"
+        400:
+          $ref: "#/components/responses/IncompleteRequest"
+        500:
+          $ref: "#/components/responses/InternalError"
+
+    post:
+      description: Add new item
+      parameters:
+        - name: name
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: price
+          in: query
+          required: true
+          schema:
+            type: number
+      responses:
+        200:
+          $ref: "#/components/responses/Item"
+        400:
+          description: Item information invalid or incomplete
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        500:
+          $ref: "#/components/responses/InternalError"
+
+    put:
+      parameters:
+        - name: name
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: price
+          in: query
+          required: false
+          schema:
+            type: number
+      responses:
+        200:
+          $ref: "#/components/responses/Item"
+        404:
+          $ref: "#/components/responses/NotFound"
+        400:
+          $ref: "#/components/responses/IncompleteRequest"
+        500:
+          $ref: "#/components/responses/InternalError"
+
+    delete:
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+        404:
+          $ref: "#/components/responses/NotFound"
+        400:
+          $ref: "#/components/responses/IncompleteRequest"
+        500:
+          $ref: "#/components/responses/InternalError"
+
+  /item/all:
+    get:
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Item"
+        500:
+          $ref: "#/components/responses/InternalError"
+
+  /item/search:
+    get:
+      parameters:
+        - name: name
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Item"
+        400:
+          $ref: "#/components/responses/IncompleteRequest"
+        500:
+          $ref: "#/components/responses/InternalError"
+
+  /cart:
+    get:
+      responses:
+        200:
+          $ref: "#/components/responses/Cart"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: "#/components/responses/InternalError"
+      security:
+        - basicAuth: []
+
+    delete:
+      responses:
+        200:
+          description: OK
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: "#/components/responses/InternalError"
+      security:
+        - basicAuth: []
+
+  /cart/add:
+    put:
+      parameters:
+        - name: item
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          $ref: "#/components/responses/Cart"
+        404:
+          $ref: "#/components/responses/NotFound"
+        400:
+          $ref: "#/components/responses/IncompleteRequest"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: "#/components/responses/InternalError"
+      security:
+        - basicAuth: []
+
+  /cart/remove:
+    put:
+      parameters:
+        - name: item
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          $ref: "#/components/responses/Cart"
+        404:
+          $ref: "#/components/responses/NotFound"
+        400:
+          $ref: "#/components/responses/IncompleteRequest"
+        403:
+          $ref: "#/components/responses/Forbidden"
+        500:
+          $ref: "#/components/responses/InternalError"
+      security:
+        - basicAuth: []
+        
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        login:
+          type: string
+
+    Error:
+      type: object
+      properties:
+        status:
+          type: integer
+        detail:
+          type: string
+        instance:
+          type: string
+
+    # Token:
+    #   type: object
+    #   properties:
+    #     token:
+    #       type: string
+    
+    Item:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        price:
+          type: number
+
+    Cart:
+      type: object
+      properties:
+        id:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/Item"
+    
+  responses:
+    User:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/User"
+    Item:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Item"
+    Cart:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Cart"
+    NotFound:
+      description: User not found
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    InternalError:
+      description: Internal error
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    IncompleteRequest:
+      description: Request is incomplete
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    Unauthorized:
+      description: Authorization failed
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    Forbidden:
+      description: Request not allowed for user
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+
+  securitySchemes:
+    basicAuth:     
+      type: http
+      scheme: basic
